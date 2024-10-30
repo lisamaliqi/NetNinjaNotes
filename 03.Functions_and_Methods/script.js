@@ -165,15 +165,43 @@ console.log(result2);//-->LISA
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            ELSE AND IF ELSE
+//                           CALLBACK FUNCTION AND FOREACH
+//sätta in en funktion som en argument
+const myFunc = (callbackFunc) => {
+    let value = 50;
+    callbackFunc(value);
+};
+
+/* 
+myFunc(function(value){ //myFunc är funktionen där uppe, function är en funktion som sätts som en argument
+    console.log(value); 
+});
+ */
+
+//arrow function
+myFunc(value => { 
+    console.log(value); 
+});
 
 
+let people = ['Lisa', 'Tova', 'Alicia', 'Tiger', 'Casper'];
+/* 
+people.forEach(function(person){
+    console.log(person);
+});
+ */
+//arrow function
+people.forEach((person, index) => {
+    console.log(index, person);
+});
 
+console.log('-------------------------------');
 
+const logPerson = (person, index) => {
+    console.log(`${index} - hello ${person}`);
+};
 
-
-
-
+people.forEach(logPerson);//detta ger i princip samma resultat
 
 
 
