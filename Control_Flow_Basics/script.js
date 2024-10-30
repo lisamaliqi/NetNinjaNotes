@@ -240,17 +240,28 @@ switch(grade){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                                BOOLEANS & COMPARISION
+//                                BLOCK SCOPE
+//allt detta gäller för variablarna let OCH const
+let agee = 30;//global scope
+//alltså om man lägger variabeln i roten av dokumentet, inte i en scope (ex if statement)
+//kan användas vart man än vill i dokumentet
 
+if(true){
+    // agee = 40; -->detta byter värdet på både inne i code block och utanför code block
 
+    //local scope
+    let agee = 40;//detta ändrar värdet i code block men inte utanför code block
+    let myName = 'Lisa';
 
+    console.log('Inside 1st code block: ', agee, myName);
 
+    if(true){
+        //ny local scope, denna hade inte ändrat värdet på local scope 1, utan bara i local scope 2. 
+        // let agee = 50;
+        console.log('Inside 2nd code block: ', agee);//--> 40 i agee
+        //denna statement är innuti first code block, därav tar den från the local scope
+    }
+}
 
-
-
-
-
-
-
-
-
+console.log('Outside code block: ', agee);//-->myName is not defined
+//local scopes är inte tillgängliga utanför code block
