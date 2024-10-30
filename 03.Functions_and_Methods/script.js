@@ -91,17 +91,57 @@ console.log(newArea);//-->78.5
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            ELSE AND IF ELSE
+//                             ARROW FUNCTIONS
+//ett nytt sätt i JS för att göra funktioner kortare och snyggare
+/* Tidigare funktion
+const calcArea = function(radius){
+    return 3.14 * radius**2;
+} 
+    */
+//Arrow function
+const calcArea1 = (radius) => {//man behöver ej skriva "function", räcker med arrows
+    //har man bara en parameter (radius) så kan man ta bort parateserna runt ordet radius för att korta ner ännu mer
+    //har man ingen parameter måste man ha paranteser, samma om det är mer än en parameter
+    return 3.14 * radius**2;
+};
+
+//om man bara har ett return value i funktionen kan man korta ner ännu mer genom att göra detta:
+//const calcArea1 = radius => 3.14 * radius**2;
+
+const area1 = calcArea1(5);
+console.log('area is: ', area1);//-->78.5
+//fungerar på exakt samma sätt
 
 
+//övning 1
+/*
+const practice1 = function(){
+    return 'hello, world'
+}
+*/
+const practice1 = () => 'hello, world';
+const test1 = practice1();
+console.log(test1);//-->hello, world
 
 
-
-
-
-
-
-
+//övning 2
+/* 
+const bill = function(products, tax){
+    let total = 0;
+    for(let i = 0; i < products.length; i++){
+        total += products[i] + products[i] * tax;
+    }
+    return total;
+}
+ */
+const bill = (products, tax) => {
+    let total = 0;
+    for(let i = 0; i < products.length; i++){
+        total += products[i] + products[i] * tax;
+    }
+    return total;
+};
+console.log(bill([10,15,30], 0.2));
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
