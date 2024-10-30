@@ -42,17 +42,30 @@ speak();//anropar const speak -->Good day
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            ELSE AND IF ELSE
+//                            ARGUMENTS AND PARAMETERS
+
+const speak1 = function(name){//name är en "parameter"
+    console.log(`Good day ${name}`);
+}
+
+speak1();//-->Good day undefined
+speak1('Lisa');//-->Good day Lisa
+//lisa är en "argument"
+//lisa är att du lägger in ett värde in i funktionen
+
+//variabeln name kan bara användas inom den scopen, alltså funktionen
 
 
+const speak2 = function(name = 'Tova', time = 'night'){//name är en "parameter" tova och night är "default" värden
+    console.log(`Good ${time} ${name}`);
+}
 
-
-
-
-
-
-
-
+speak2();//-->Good night Tova
+//saknar väden, därav används default 
+speak2('Lisa')//-->Good night Lisa
+//första värdet ändras, medans andra är kvar på default
+speak2('Lisa', 'morning');//-->Good morning Lisa
+//order på arguments MÅSTE vara samma som parameters
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
