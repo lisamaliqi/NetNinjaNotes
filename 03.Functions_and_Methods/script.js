@@ -203,23 +203,26 @@ const logPerson = (person, index) => {
 
 people.forEach(logPerson);//detta ger i princip samma resultat
 
-
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            ELSE AND IF ELSE
+//                           CALLBACK FUNCTION IN ACTION
 
+const ul = document.querySelector('.people1');//ul class i html som heter people
 
+const people1 = ['Lisa', 'Tova', 'Alicia', 'Tiger', 'Casper'];
 
+let html = ``;
 
+people1.forEach(people1 => {
+    //skapa en html template för varje person
+    html += `<li style="color: purple">${people1}</li>`
+    //för varje person i arrayn lägger vi till denna snippen av kod i html
+})
 
+console.log(html);
 
-
-
-
-
+ul.innerHTML = html;
+//kommer mer om detta i senare avsnitt
 
