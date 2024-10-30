@@ -193,20 +193,48 @@ Congratulations, you got the top score
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                                BOOLEANS & COMPARISION
+//                                SWITCH STATEMENT
+//när man ska kolla flera värden för en variabel
+//if statement
+//detta är okej, men det kan ibland bli lite för mycket 
+/* if(grade === 'A'){
 
+} else if(grade === 'B'){
 
+} else if(grade === 'C'){
 
+} else if(grade === 'D'){
 
+} else if(grade === 'E'){
 
+} else {
 
+} */
 
+const grade = 'D';
 
-
-
-
-
-
+//switch
+//switch använder strict equalitu, alltså ===, det betyder att string och number är olika 
+switch(grade){
+    case 'A':
+        console.log('You got an A');
+        break;
+    case 'B':
+        console.log('You got an B');
+        break;
+    case 'C':
+        console.log('You got an C');
+        break;
+    case 'D':
+        console.log('You got an D');//detta kommer visas upp
+        break;//break ska inkluderas, annars kommer all kod efter (allså 'E' och 'default' också att visas)
+    case 'E':
+        console.log('You got an E');
+        break;
+    default:
+        console.log('Not a valid grade');
+        break;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
