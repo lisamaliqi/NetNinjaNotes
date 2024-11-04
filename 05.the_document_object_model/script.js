@@ -15,7 +15,43 @@ Man kan göra massor av saker, ex
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                         THE QUERY SELECTOR
+
+//bästa sättet att ta ett element från the DOM, alltså the document (html/css)
+const para = document.querySelector('p');//går upp till ner i DOM, tar första 
+//p-taggen den hittar, alltså den med "hello world"
+console.log(para);//--> <p>Hello world</p>
+
+const para2 = document.querySelector('.error');//.=class, tar första element med class=error
+console.log(para2);//--> <p class="error">This is an error message</p>
+
+const para3 = document.querySelector('div.error');//letar efter första div med class=error
+console.log(para3);//--> <div class="error">This is another error</div>
+
+const para4 = document.querySelector('body > h1');//tar ut första h1 elementet i body
+console.log(para4);//--> <h1>The document object method</h1>
+
+
+const paras = document.querySelectorAll('p');
+console.log(paras);//blir en nodeList, ser ut som en array men kan ej användas som en array
+console.log(paras[0]);//--> <p>Hello world</p>    tar ut första p i index 0
+
+paras.forEach(para => {
+    console.log(para);
+});//-->nu visar den alla p elements i consolen
+
+const errors = document.querySelectorAll('.error');
+console.log(errors);//-->nodeList för alla element med classen error
+
+
+
+
+
+
+
+
+
+
 
 
 
