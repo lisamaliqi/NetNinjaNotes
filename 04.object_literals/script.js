@@ -75,7 +75,37 @@ user2.logout();//-->The user logged out
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            WHAT ARE FUNCTIONS?
+//                            THIS KEYWORD
+let user3 = {
+    name: 'Lisa',   //name = key, Lisa = value, dessa tillsammans blir en property av objektet user
+    age: 23,
+    email: 'lisamaliqi@hotmail.com',
+    location: 'Malmö',
+    blogs: ['Why mac and cheese rules', '10 things to make with marmite'],
+
+    //lägger till methods som är en function i objektet
+    login: function() {
+        console.log('The user logged in');
+    },
+    logout: function() {
+        console.log('The user logged out');
+    },
+
+    //hur man får tag i arrayn "blogs" som finns längre upp
+    logBlogs() { //att ta bort "function" från detta gör att den fortfarande är en vanlig function
+        //håll dig till detta sättet när du skriver functions i objects, inte så som login och logout är
+        //om jag ska använda mig utav this keyword så kan jag inte skriva en arrow function
+        // this.blogs;     //this= refererar till "this user3 object"
+        //console.log(this.blogs);//-->visar hela arrayn i "user3.logBlogs();"
+        console.log('this user has written the following blogs: ');
+        this.blogs.forEach(blog =>  {
+            console.log(blog);
+        })
+    }
+};
+
+user3.logBlogs();//printar ut funktionen logblogs, både this user... samt det som finns i arrayn
+// console.log(this);
 
 
 
