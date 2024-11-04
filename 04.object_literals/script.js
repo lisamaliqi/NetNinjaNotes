@@ -52,9 +52,24 @@ console.log(typeof user);//-->object           user är ett object
 
 //                           ADDING METHODS
 
+let user2 = {
+    name: 'Lisa',   //name = key, Lisa = value, dessa tillsammans blir en property av objektet user
+    age: 23,
+    email: 'lisamaliqi@hotmail.com',
+    location: 'Malmö',
+    blogs: ['Why mac and cheese rules', '10 things to make with marmite'],
 
+    //lägger till methods som är en function i objektet
+    login: function(){
+        console.log('The user logged in');
+    },
+    logout: function(){
+        console.log('The user logged out');
+    }
+};
 
-
+user2.login();//-->The user logged in
+user2.logout();//-->The user logged out
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
