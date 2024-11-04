@@ -19,17 +19,38 @@ en titel, författare och innehåll, medans dens methods är att publicera, ta b
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            WHAT ARE FUNCTIONS?
+//                            CREATING AN OBJECT
+//{} när man gör ett objekt, [] när det är array 
+let user = {
+    name: 'Lisa',   //name = key, Lisa = value, dessa tillsammans blir en property av objektet user
+    age: 23,
+    email: 'lisamaliqi@hotmail.com',
+    location: 'Malmö',
+    blogs: ['Why mac and cheese rules', '10 things to make with marmite']
+};
 
+console.log(user);//allt i objektet syns i loggen
 
+console.log(user.age);//-->23
+user.age = 24;//byter värde på en specifik grej i objektet
+console.log(user.age);//-->24
 
+console.log(user['name']);//-->Lisa
+user['name'] = 'Tova';
+console.log(user['name']);//-->Tova
 
+//kan också göra detta om man har []:
+//man sparar alltså värdet i en variabel 
+const key = 'name';
+console.log(user[key]);//-->Tova
+
+console.log(typeof user);//-->object           user är ett object
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            WHAT ARE FUNCTIONS?
+//                           ADDING METHODS
 
 
 
