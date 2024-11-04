@@ -159,16 +159,30 @@ let user4 = {
 
 user4.logBlogs();//printar ut det som finns i logblogs, alltså även det som finns i arrayn blogs
 
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            WHAT ARE FUNCTIONS?
+//                            MATH OBJECTS
+//javascript har redan massa färdiga objects som man kan använda sig utav, en utav dom är Math object
+//den innehåller flera properties och methods redan färdiga
+
+console.log(Math);//-->loggar ut alla Math's properties och methods man kan använda sig utav
+console.log(Math.PI);//-->3.141592653589793   printar ut PI numret
+console.log(Math.E);//-->2.718281828459045    också ett matematiskt nummer
+
+const area = 7.7;
+console.log(Math.round(area));//-->8     rundar const area till det närmsta heltalet
+console.log(Math.floor(area));//-->7     rundar alltid ner numret till närmata heltal
+console.log(Math.ceil(area));//-->8      rundar alltid upp numret till närmsta heltal
+console.log(Math.trunc(area));//-->7     tar bort decimalen helt 
 
 
-
-
+//generate random number
+const random = Math.random();
+console.log(random);//loggar random nummer mellan 0-1, alltså i princip bara decimaler
+console.log(Math.round(random));//random nummer mellan 0-1, men pga "round" så är det bara heltal
+console.log(Math.round(random * 100));//random nummer mellan 0-100, pga "round" så är det bara heltal
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
