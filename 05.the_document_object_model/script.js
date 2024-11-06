@@ -209,16 +209,31 @@ console.log('--------------------------------------------');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                            EVENTS AND EVENT LISTENERS
+//simple example
+const button = document.querySelector('button');
+
+button.addEventListener('click', () => {
+    console.log('You clicked me!');
+});//om jag klickar på "button" så kommer det loggas "you clicked me!"
+//1.vad för typ av event är det vi letar efter = click  
+//2.callback function, vad som kommer hända när vi utför eventet click = loggar 'you clicked me'
 
 
+const items = document.querySelectorAll('.events li');
+//vi måste göra forEach på alla i nodeListan pga vi kan ej sätta eventListener på en nodeList
+items.forEach(item => {//om jag trycker på en av grejerna i listan så loggas något
+    item.addEventListener('click', event => {
+        // console.log('Item clicked');//loggas "item clicked"
+        // console.log(event);//loggas pointerEvent, alltså alla dess funktioner tror jag?
+        // console.log(item);//loggas specifikt den raden man trycker 
 
+        // console.log(event.target);//loggas specifikt den raden man trycker 
+        //event.target är det bättre alternativet, ha det som vana
 
-
-
-
-
-
+        event.target.style.textDecoration = 'line-through';//drar en linje över texten när man trycker på den
+    });
+});
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

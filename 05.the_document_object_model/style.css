@@ -9,3 +9,12 @@
     color: green;
     border: 1px dotted green;
 }
+
+.events li {
+    list-style-type: none;
+    max-width: 200px;
+    padding: 8px;
+    margin: 8px auto;
+    background: #eee;
+    border: 1px dotted black;
+}
