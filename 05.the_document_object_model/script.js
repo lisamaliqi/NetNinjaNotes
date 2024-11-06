@@ -104,16 +104,26 @@ console.log('--------------------------------------------');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                        GETTING AND SETTING ATTRIBUTES
+
+const link = document.querySelector('a');
+
+console.log(link.getAttribute('href'));//få tag på en attribut 
+link.setAttribute('href', 'https://www.aftonbladet.se/');//1.vilket attribut vill du ändra? 2.Vad vill du ändra den till?
+//tar alltså det som är i href och gör om det till en länk till aftonbladet
+link.innerText = 'Länk till aftonbladet';//har nu ändrat text till länken
 
 
+const mssg = document.querySelector('p');
 
+console.log(mssg.getAttribute('class'));//-->error          får ut classen på den taggen
+mssg.setAttribute('class', 'sucess');//byter värdet på classen
+console.log(mssg.getAttribute('class'));//-->sucess         får ut classen på den taggen
 
+//skapa en attribut 
+mssg.setAttribute('style', 'color: green;');//gör om texten till grön, skapar en ny attribut och ger det ett värde
 
-
-
-
-
+console.log('--------------------------------------------');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
