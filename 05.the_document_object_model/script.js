@@ -147,16 +147,29 @@ console.log('--------------------------------------------');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                            ADDING AND REMOVING CLASSES
+
+const pTag = document.querySelectorAll('p');
+const index2 = pTag[2];//index2 har värdet av den p-taggen på index 2
+console.log(index2.classList);//får upp alla classes som är i p-taggen på index 2
+index2.classList.add('javaScript');//lägger till en class som heter javaScript
+index2.classList.remove('javaScript');//tar bort javascript classen
+index2.classList.add('sucess');//lägger till classen sucess (gör texten grön pga finns i style.CSS)
+index2.classList.toggle('toggle');//toggle är ifall classen inte finns = lägg till den, men om den finns = ta bort den 
 
 
+//ÖVNINGEN
+const test = document.querySelectorAll('.test');
 
+test.forEach(test => {
+    if(test.textContent.includes('error')){//textContent visar text ÄVEN om det är gömt av ex span, det gör ej innerText
+        test.classList.add('error');
+      } else if(test.textContent.includes('sucess')) {
+        test.classList.add('sucess');
+      }
+    })
 
-
-
-
-
-
+console.log('--------------------------------------------');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
