@@ -175,16 +175,35 @@ console.log('--------------------------------------------');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                      PARENTS, CHILDREN AND SIBLINGS
+//childre
+const article = document.querySelector('article');
+console.log(article.children);//-->får ut en HTMLcollection med alla articles children
+
+//convert HTMLcollection to array so that i can do forEach
+let array = Array.from(article.children);//skapar en array från article.children
+console.log(array);//loggar arrayn
+
+array.forEach(child => { //forEach för att lägga in en class i varje element
+    child.classList.add('article-element');
+});
 
 
+//parent
+const articleTitle = document.querySelector('h4');
+console.log(articleTitle.parentElement);//får ut vad elementet har för parent
+console.log(articleTitle.parentElement.parentElement);//får ut parent av parent av elementet
 
 
+//sibling
+console.log(articleTitle.nextElementSibling);//får ut vilket element som är sibling på tur till elementet
+console.log(articleTitle.previousElementSibling);//får ut vilket element som är sibling innan elementet
 
 
+//chaining
+console.log(articleTitle.nextElementSibling.parentElement.children);
 
-
-
+console.log('--------------------------------------------');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
