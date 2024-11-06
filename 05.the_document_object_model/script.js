@@ -129,16 +129,19 @@ console.log('--------------------------------------------');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                            ADDING AND REMOVING STYLES
 
+const titleStyle = document.querySelector('h2');
+// titleStyle.setAttribute('style', 'margin: 50px');//detta skriver över tidigare style
 
+console.log(titleStyle.style);//tar fram all css styles
+console.log(titleStyle.style.color);//ta fram specifikt vilket värde attributen color har 
+titleStyle.style.margin = '50px';//detta lägger till en ny property samtidigt som man behåller gamla
+titleStyle.style.color = 'red';//ändrar värdet på color propertyn
+titleStyle.style.fontSize = '60px';//ändrar fontsize till 60px (måste skriva med camelCase, ej font-size)
+titleStyle.style.margin = '';//tar bort margin, sätter man string som empty så tar det bort värdet
 
-
-
-
-
-
-
+console.log('--------------------------------------------');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
