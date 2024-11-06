@@ -211,15 +211,16 @@ console.log('--------------------------------------------');
 
 //                            EVENTS AND EVENT LISTENERS
 //simple example
-const button = document.querySelector('button');
+const button1 = document.querySelector('button');
 
-button.addEventListener('click', () => {
+button1.addEventListener('click', () => {
     console.log('You clicked me!');
 });//om jag klickar på "button" så kommer det loggas "you clicked me!"
 //1.vad för typ av event är det vi letar efter = click  
 //2.callback function, vad som kommer hända när vi utför eventet click = loggar 'you clicked me'
 
 
+//bigger example
 const items = document.querySelectorAll('.events li');
 //vi måste göra forEach på alla i nodeListan pga vi kan ej sätta eventListener på en nodeList
 items.forEach(item => {//om jag trycker på en av grejerna i listan så loggas något
@@ -241,14 +242,32 @@ items.forEach(item => {//om jag trycker på en av grejerna i listan så loggas n
 
 //                            CREATING AN OBJECT
 
+const ul = document.querySelector('.creating ul')
+// ul.remove();//tar bort ul listan helt från the DOM
 
+const button = document.querySelector('.creating button');
+button.addEventListener('click', () => {
+    // ul.innerHTML += '<li>Something new</li>';//när man trycker på knappen skapas en ny rad där det står "something new"
+    const li = document.createElement('li');//skapar li som är tom
+    li.textContent = 'something new to do';//ger li ett innehåll
 
+    // ul.append(li);//gör så att li läggs till i slutet av listan
+    //ul är parent
+    //append tar li (child) och lägger det i slutet av ul (parent)
 
+    ul.prepend(li);//läggs till i början av listan
+    //ul är parent
+    //prepend tar li (child) och lägger det i början av ul (parent)
+}) 
+//trycker man på knappen kommer en ny rad upp, men man kan ej ta bort den raden på samma sätt som the OG raderna
 
+const items2 = document.querySelectorAll('.creating li');
 
-
-
-
+items2.forEach(item => {
+    item.addEventListener('click', event => {
+        event.target.remove();//man tar bort listan när man trycker på den
+    });
+});
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
