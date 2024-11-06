@@ -67,20 +67,38 @@ const allPara = document.getElementsByTagName('p');
 console.log(allPara);//får ut de element som har tag name p
 console.log(allPara[1]);//får ut elementet som ligger på index 1 i alla paragrafer
 
+console.log('--------------------------------------------');
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                        ADDING AND CHANGING PAGE CONTENT
+
+// const para = document.querySelector('p');
+console.log(para.innerText);//för att få ut innehållet i taggen, alltså "hello world"
+
+para.innerText = 'I am AWESOME';//byter vad som står i webbsidan
+para.innerText += ' and you are NOT';//tar det som är i inner text och lägger till (+) det man skriver
 
 
+// const paras = document.querySelectorAll('p');
+paras.forEach(para => { 
+    console.log(para.innerText);//loggar allt innehåll i p-taggar 
+    para.innerText += ' new text';//lägger till "new text" bakom alla p-taggar i dokumentet
+})
 
 
+const content = document.querySelector('.content');
+console.log(content.innerHTML);//se vad för HTML som är inne i class=content 
+content.innerHTML = '<h2>Make this a new h2!</h2>';//har ändrat html värdet till h2 
 
+const people = ['Mario', 'Luigi', 'Yoshi'];
+people.forEach (person => {
+    content.innerHTML += `<p>${person}</p>`;//en lista från arrayn people syns i dokumentet
+});
 
-
-
-
+console.log('--------------------------------------------');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
