@@ -167,7 +167,7 @@ test.forEach(test => {
       } else if(test.textContent.includes('sucess')) {
         test.classList.add('sucess');
       }
-    })
+    });
 
 console.log('--------------------------------------------');
 
@@ -258,7 +258,7 @@ button.addEventListener('click', () => {
     ul.prepend(li);//läggs till i början av listan
     //ul är parent
     //prepend tar li (child) och lägger det i början av ul (parent)
-}) 
+}); 
 //trycker man på knappen kommer en ny rad upp, men man kan ej ta bort den raden på samma sätt som the OG raderna
 
 const items2 = document.querySelectorAll('.creating li');
@@ -282,7 +282,7 @@ button3.addEventListener('click', () => {
     const li = document.createElement('li');
     li.textContent = 'something new to do';
     ul3.prepend(li);
-}) 
+}); 
 
 const items3 = document.querySelectorAll('.bubbling li');
 
@@ -311,7 +311,7 @@ ul3.addEventListener('click', event => {
     if (event.target.tagName === 'LI'){ //om event.target har en tagName som heter 'LI' gör detta:
         event.target.remove(); //ta bort targeten, alltså hela li listan
     }
-})
+});
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -337,29 +337,40 @@ box.addEventListener('mousemove', event => { //om jag har min mus över boxen, d
 
     box.textContent = `x pos - ${event.offsetX}, y pos - ${event.offsetY}`;
     //byter värdet av tidigare innehåll av boxen till det som står över, kommer ocksp visa vart i x och y värde man är    
-})
+});
 
 //wheel event:
 //man sätter inte denna på en speciell tag, utan snarare på hela dokumentet
 document.addEventListener('wheel', event => {//om jag skrollar så händer detta:
     console.log(event.pageX, event.pageY);
     //loggar vad för värdea x och y har när du skrollar
-})
+});
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                            MAKING A POPUP
+const buttonPop = document.querySelector('.makingPopup button');//hämtar knappen
+const popup = document.querySelector('.popup-wrapper');//hämtar osynliga delen, ska bli synlig när man klickar
+const close = document.querySelector('.popup-close');//hämtar x knappen i pop-upen
 
+//få upp pop-up
+buttonPop.addEventListener('click', () => {//när man trycker på knappen så blir pop-upen synlig
+    popup.style.display = 'block'; //hade detta på none i CSS, gör om det till block
+});
 
+//få bort pop-up genom x-knapp
+close.addEventListener('click', () => {//när man trycker på x i pop-up så händer detta:
+    popup.style.display = 'none'; //man gör tillbaks den till none, alltså osynlig
+    //i princip samma kod som blocket innan
+});
 
-
-
-
-
-
-
+//få bort pop-up genom att trycka utanför, alltså i wrappern (gråa delen)
+popup.addEventListener('click', () => {//när man trycker på x i pop-up så händer detta:
+    popup.style.display = 'none'; //man gör tillbaks den till none, alltså osynlig
+    //i princip samma kod som blocket innan
+});
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
