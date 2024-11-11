@@ -240,7 +240,7 @@ items.forEach(item => {//om jag trycker på en av grejerna i listan så loggas n
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                            CREATING AND REMOVING ELEMENTS
 
 const ul = document.querySelector('.creating ul')
 // ul.remove();//tar bort ul listan helt från the DOM
@@ -273,15 +273,45 @@ items2.forEach(item => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                            EVENT BUBBLING AND DELEGATION
 
+const ul3 = document.querySelector('.bubbling ul')
 
+const button3 = document.querySelector('.bubbling button');
+button3.addEventListener('click', () => {
+    const li = document.createElement('li');
+    li.textContent = 'something new to do';
+    ul3.prepend(li);
+}) 
 
+const items3 = document.querySelectorAll('.bubbling li');
 
+/* items3.forEach(item => {
+    item.addEventListener('click', event => {
+        console.log('event in LI');//när man trycker på items3 så kommer detta loggas i consolen
+        //detta loggas precis innan console.log('event in UL'); loggas från nedstående block
+        //detta kallas event bubbling, vi kan dock stoppa detta, så att bara LI körs men inte UL
+        event.stopPropagation();
+        //detta stoppar event bubbling och därmed syns bara LI i consollen, inte UL
+        //däremot, alla nya lists som läggs till när man trycker på knappen ingår ej här
+        //detta kan allt lösas på ett annat sätt också, via blocket nedan: 
+        event.target.remove();
+    });
+}); */
 
+ul3.addEventListener('click', event => {
+    //när man trycker på ul3 så kommer detta hända:
+    // console.log('event in UL');
+    //loggar 'event in ul
 
+    // console.log(event.target);
+    //loggar vilken lista man trycker på, står ex <li>pay the bills</li>, samma gäller när man lägger
+    //till en ny lista, den ser exakt likadan ut när man trycker på den
 
-
+    if (event.target.tagName === 'LI'){ //om event.target har en tagName som heter 'LI' gör detta:
+        event.target.remove(); //ta bort targeten, alltså hela li listan
+    }
+})
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
