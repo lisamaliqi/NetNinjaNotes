@@ -318,16 +318,33 @@ ul3.addEventListener('click', event => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                            MORE EVENTS
+//copy event:
+const copy = document.querySelector('.moreEvents .copy-me');
+copy.addEventListener('copy', () => {
+    console.log('MY CONTENT IS COPYRIGHT');
+    //när man försöker kopiera en text så loggas det som står över i consollen
+});
 
+//mouseover event:
+const box = document.querySelector('.moreEvents .box');
+box.addEventListener('mousemove', event => { //om jag har min mus över boxen, då händer detta: 
+    // console.log(event);
+    //loggar ut all info om boxen i consollen
 
+    // console.log(event.offsetX, event.offsetY);
+    //loggar bara x och y värdet i boxen beroende på vart musen befinner sig
 
+    box.textContent = `x pos - ${event.offsetX}, y pos - ${event.offsetY}`;
+    //byter värdet av tidigare innehåll av boxen till det som står över, kommer ocksp visa vart i x och y värde man är    
+})
 
-
-
-
-
-
+//wheel event:
+//man sätter inte denna på en speciell tag, utan snarare på hela dokumentet
+document.addEventListener('wheel', event => {//om jag skrollar så händer detta:
+    console.log(event.pageX, event.pageY);
+    //loggar vad för värdea x och y har när du skrollar
+})
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
