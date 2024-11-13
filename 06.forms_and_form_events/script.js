@@ -1,9 +1,9 @@
 
 //                            SUBMIT EVENTS
-const form = document.querySelector('.signup-form');
+const form1 = document.querySelector('.submitEvents .signup-form');
 // const username = document.querySelector('#username');
 
-form.addEventListener('submit', event => {//man kan köra click men om man kör submit så fungerar all typ av submit, även enter i tangentbordet
+form1.addEventListener('submit', event => {//man kan köra click men om man kör submit så fungerar all typ av submit, även enter i tangentbordet
     event.preventDefault();
     //prevents default action av ett event
     //denna gör så att sidan inte refreshar varje gång man gör en submit
@@ -11,31 +11,47 @@ form.addEventListener('submit', event => {//man kan köra click men om man kör 
     // console.log(username.value);
     //loggar ut det jag skriver i input delen till consollen
 
-    form.username;
-    //hur man får fields från en form, man använder sig utav dot-notation
+    form1.username;
+    //hur man får fields från en form1, man använder sig utav dot-notation
     //man behöver alltså inte göra som rad 4 och rad 11 tillsammans, utan man kan göra detta enskilt
     //när man har dot-notation här så letar js efter ett id som heter username i form
     //dot-notation fungerar inte bara för id, utan fungerar också med name
 
-    console.log(form.username.value);
+    console.log(form1.username.value);
     //detta gör exakt samma som rad 11
-})
+});
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                            REGEX (regular expressions)
 
+/*
+Man matchar ett ord på regEx genom att skriva ex: /ninja/
+Detta letar efter ordet ninja i en string oavsett om det är ord innan elr efter samt 
+om det är ihop med något annat. 
 
+Hade man istället skrivit /^ninja$/ så kommer det leta efter ifall det BARA 
+står ninja i stringen
 
+/^[]$/ detta är en character set, om man skriver ex /^[a-z]$/ så letar det efter en
+ENDA bokstav mellan a-z, så skriver man ex h blir de godkänt men skriver man hp 
+är det inte godkänt pga det är två bokstäver. detta funger ex inte heller för 
+stora bokstäver som H 
 
+/^[a-zA-Z]$/ detta får det att matcha med både stora och små bokstäver
 
+/^[a-zA-Z]{6,10}$/ genom att skriva i {x,y} så väljer man hur många karaktärer man ska 
+leta efter, ex här så hade inte "hello" matchat men hade man skrivit "hellooo" så 
+hade det matchat
 
+/^[a-zA-Z0-9]{6,10}$/ nu kan man också inkludera siffror mellan 0-9
 
+en punkt . betyder alla karaktärer, allstå även specialkaraktärer
+^.{6,10}$ detta hade fungerat att skriva nvs3"=nfs
 
-
-
+*/
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
