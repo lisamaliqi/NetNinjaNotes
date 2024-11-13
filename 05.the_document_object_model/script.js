@@ -158,7 +158,7 @@ index2.classList.add('sucess');//lägger till classen sucess (gör texten grön 
 index2.classList.toggle('toggle');//toggle är ifall classen inte finns = lägg till den, men om den finns = ta bort den 
 
 
-//ÖVNINGEN
+//ÖVNINGE
 const test = document.querySelectorAll('.test');
 
 test.forEach(test => {
