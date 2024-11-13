@@ -56,16 +56,60 @@ en punkt . betyder alla karaktärer, allstå även specialkaraktärer
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                         TESTING REGEX PATTERNS
 
+const form2 = document.querySelector('.regEx .signup-form');
 
+form2.addEventListener('submit', event => {
+    event.preventDefault();//tar bort default värdet (refreshar varje gång)
+    console.log(form2.username.value);//loggar i consollen vad man skriver i username
+});
 
+const firstname = 'lisa';
+const lastname = 'maliqi';
+const email = 'lisamal4132@gmail.com'
 
+//förvarar REGEX i denna:
+const pattern =/[a-z]{6,}/;  
+//detta betyder bokstäver mellan a-z samt minst 6 bokstäver, finns inget tak på max
 
+//1. vi skapar en variabel som heter result
+//2. vi tar ut pattern variabeln och adderar metoden "test()" för att testa ifall
+//   variabeln "firstname" stämmer överens med pattern, alltså har stringen 'lisa'
+//   bokstäver mellan a-z och minst 6 bokstäver?
+let result = pattern.test(firstname);
+let result2 = pattern.test(lastname);
+let result3 = pattern.test(email);
+//här loggar vi resultatet
+console.log(result);//-->false    pga bara 4 bokstäver
 
+console.log(result2);//-->true    pga minst 6 bokstäver bokstäver
 
+console.log(result3);//-->true    pga lisamal finns i stringen, då går det
 
+//hade jag skrivit detta: 
+const patternAlone =/^[a-z]{6,}$/;  
+let result4 = patternAlone.test(email);
+console.log(result4);//-->false   pga får ENDAST vara det man skriver in i patternAlone
+let result5 = patternAlone.test(lastname);
+console.log(result5);//-->true    pga finns ett ord med minst 6 bokstäver i starten och
+//                                slutet av stringen
 
+//simpel if statement för att demonstrera
+if (result2) {
+    console.log('regex test passed!');//om det är true logga detta
+} else {
+    console.log('regex failed...');// on det är falskt logga detta
+}
+
+//skapar ny variabel
+result = email.search(patternAlone);
+console.log(result);//-1        detta symboliserar att det är false, 
+
+result = lastname.search(patternAlone);
+console.log(result);//0         visar 0 pga visar vilken position den startar i stringen(index)
+
+console.log('------------------------------------');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
