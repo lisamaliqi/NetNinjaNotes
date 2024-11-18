@@ -85,6 +85,7 @@ console.log('-----------------------------------------');
 
 //                            REDUCE METHOD
 // retunerar inte nödvändigtvis en array, kan också retunera ett innehåll i arrayn
+//nondestructive
 // const scores = [10, 30, 15, 25, 50, 40, 5];
 console.log(scores);
 
@@ -160,16 +161,60 @@ console.log('-----------------------------------------');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                           SORT METHOD
+//hur man sorterar innehållet i en array
+//skapar inte en ny array, utan ändrar den arrayen som man hade tidigare, denna är destrictive
+//sortera strings:
+const names = ['mario', 'shaun', 'chun-li', 'yoshi', 'luigi'];
+
+names.sort();//har en inbygt funktion som gör att strings alltid sorteras i bokstavsordning
+console.log(names);
+names.reverse();//byter ordningen helt reverse, alltså kommer yoshi först
+console.log(names);
 
 
 
+//sortera nummer:
+const sortScore = [10, 50, 20, 5, 35, 70, 45];
+
+//sorterar nummer baserat på FÖRSTA numret, ej storleksorning, alltså är 5 större än 45 pga 5 kommer efter 4
+sortScore.sort();
+//man kan använda reverse på nummer också
+console.log(sortScore);
+
+//detta sorterar från störst till minst
+sortScore.sort((a, b) => b - a);
+console.log(sortScore);
 
 
 
+//sortera objekt:
+const sortPlayers = [
+    {name: 'mario', score: 20},
+    {name: 'luigi', score: 10},
+    {name: 'chun-li', score: 50},
+    {name: 'yoshi', score: 30},
+    {name: 'shaun', score: 70},
+];
 
+//sort fungerar inte ensamt på komplexa sorteringar
+//man måste inkludera en funktion
 
+sortPlayers.sort((a, b) => {
+    if(a.score > b.score){
+        return -1; //om a är större än b så ska a komma först
+    } else if (b.score > a.score){
+        return 1; //om b är större än a så ska b komma först
+    } else 
+    return 0; //om a och b är lika så ska inget hända
+});
 
+//kortare version:
+//sortPlayers.sort((a, b) => b.score - a.score);
+
+console.log(sortPlayers);
+
+console.log('-----------------------------------------');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
