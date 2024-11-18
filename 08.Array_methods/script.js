@@ -33,20 +33,51 @@ const premiumUsers = users.filter((user) => {
 
 console.log(premiumUsers);
 
+console.log('-----------------------------------------');
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                            MAP METHOD
+//tar en array och ger den ett uppdaterat värde
+//detta är en non-destructive method, men med en callback function kan man göra den destructive
+const prices = [20, 10, 30, 25, 15, 40, 80, 5];
+console.log(prices);
+
+//har också en callback function
+//här vill jag ta priserna i original-arrayn och halvera dem med 2
+const salePrices = prices.map((price) => {
+    return price / 2
+});
+
+//man kan göra det kortare:
+// const salePrices = prices.map(price => return price / 2 );
+
+//här får jag ut det nya beloppet
+console.log(salePrices);
 
 
+const products = [
+    {name: 'gold star', price: 20},
+    {name: 'mushroom', price: 40},
+    {name: 'green shells', price: 30},
+    {name: 'banana skin', price: 10},
+    {name: 'red hells', price: 50},
+];
+console.log(products);
 
+//skapa en ny array som visar halva priset på värden över 30, resten ska return som vanligt
+const saleProducts = products.map((product) => {
+    if (product.price > 30) {
+        return {name: product.name, prices:product.price / 2}
+    } else {
+        return product;
+    }
+});
+console.log(saleProducts);
 
-
-
-
-
-
+console.log('-----------------------------------------');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
