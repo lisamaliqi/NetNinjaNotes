@@ -83,16 +83,57 @@ console.log('-----------------------------------------');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                            REDUCE METHOD
+// retunerar inte nödvändigtvis en array, kan också retunera ett innehåll i arrayn
+// const scores = [10, 30, 15, 25, 50, 40, 5];
+console.log(scores);
+
+//jag vill räkna hur många tal som är lika med eller mer än 30 i arrayen scores
+const result = scores.reduce((acc, curr) => {//acc = antal tal som är >= 30, curr är current tal vi går igenom
+    if (curr >= 30) {//om talet i arrayen vi går igenom är >= 30:
+        acc++;       //lägg till +1 i acc
+    } 
+    return acc; //retunera sedan totala acc
+}, 0);//acc = 0         startvärdet på acc är 0
+
+console.log(result);
 
 
+const playerScores = [
+    {player: 'shaun', score: 50},
+    {player: 'yoshi', score: 30},
+    {player: 'mario', score: 70},
+    {player: 'yoshi', score: 60},
+    {player: 'shaun', score: 50},
+    {player: 'yoshi', score: 30},
+    {player: 'mario', score: 70},
+    {player: 'yoshi', score: 60},
+    {player: 'shaun', score: 50},
+    {player: 'yoshi', score: 30},
+    {player: 'mario', score: 70},
+    {player: 'yoshi', score: 60},
+    {player: 'shaun', score: 50},
+    {player: 'yoshi', score: 30},
+    {player: 'mario', score: 70},
+    {player: 'yoshi', score: 60},
+    {player: 'shaun', score: 50},
+    {player: 'yoshi', score: 30},
+    {player: 'mario', score: 70},
+    {player: 'yoshi', score: 60},
+];
+console.log(playerScores);
 
+//få ut totala värdet för de omgångarna yoshi kört
+const yoshiTotal = playerScores.reduce((acc, curr) => {
+    if(curr.player === 'yoshi'){ //om den som spelar har player värde 'yoshi':
+        acc += curr.score; //ska du lägga till scoren på den current item du är inne på till acc
+    }
+    return acc; //retunera sedan totala acc
+}, 0);//startvärde på acc är 0
 
+console.log(yoshiTotal);
 
-
-
-
-
+console.log('-----------------------------------------');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
