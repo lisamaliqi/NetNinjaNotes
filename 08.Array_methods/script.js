@@ -220,16 +220,36 @@ console.log('-----------------------------------------');
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AN OBJECT
+//                            CHAINING ARRAY METHOD
+
+/*
+const products = [
+    {name: 'gold star', price: 20},
+    {name: 'mushroom', price: 40},
+    {name: 'green shells', price: 30},
+    {name: 'banana skin', price: 10},
+    {name: 'red hells', price: 50},
+];
+*/
+
+//okej sätt men kanske lite gammalt sätt
+//steg 1: filtrera ut så att bara produkter med ett pris över 20 är kvar
+const filtered = products.filter(product => product.price > 20);
+console.log(filtered);
+
+//steg 2:halvera priset
+const promos = filtered.map(product => {
+    return `the ${product.name} is ${product.price / 2} pounds`;
+});
+console.log(promos);
 
 
+//nytt sätt fast lite bättre
+const promosNew = products
+.filter(product => product.price > 20)
+.map(product => `the ${product.name} is ${product.price / 2} pounds`);
 
-
-
-
-
-
-
+console.log(promosNew);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
