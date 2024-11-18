@@ -38,17 +38,38 @@ console.log('------------------------------------------');
 
 
 //                            TIMESTAMPS
+//hur man räknar ut skillnaden mellan två tider i millisekunder
+// const now = new Date();
+const before = new Date('December 10 2023 20:30:24');//få ett gammal datum
+
+console.log(now.getTime(), before.getTime());
+
+//få ut skillanden mellan before och now
+const diff = now.getTime() - before.getTime();
+console.log(diff);
 
 
+//convert milisekunder till sekunder sedan minuter
+const mins = Math.round(diff / 1000 / 60);
+console.log(mins);
+
+//till timmar
+const hours = Math.round(mins / 60);
+console.log(hours);
+
+//till dagar
+const days = Math.round(hours / 24);
+console.log(days);
+
+const everythingTogether = Math.round(diff / 1000 / 60 / 60 / 24);
+console.log(everythingTogether);
 
 
+//converting timestamps into date objects
+const timeStamps = 1313539397548;
+console.log(new Date(timeStamps));
 
-
-
-
-
-
-
+console.log('------------------------------------------');
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
