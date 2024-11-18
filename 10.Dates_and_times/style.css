@@ -1,0 +1,17 @@
+/*BUILDING A DIGITAL CLOCK*/
+
+body{
+    background: #a2a2a2;
+}
+
+.clock {
+    font-size: 4em;
+    text-align: center;
+    margin: 20px auto;
+    color: yellow;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.clock span {
+    padding: 20px;
+    background: #444;
+}

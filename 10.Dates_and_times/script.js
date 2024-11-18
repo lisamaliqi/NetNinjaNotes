@@ -77,16 +77,33 @@ console.log('------------------------------------------');
 
 //                            BUILDING A DIGITAL CLOCK
 
+//hämtar ut diven som ska innehålla klockan i HTML
+const clock = document.querySelector('.clock');
 
+//skapa en function som har ansvaret att uppdatera tiden varje sekund
+const tick = () => {
+    //hämta dagens tid när den uppdateras
+    const now = new Date();
 
+    const h = now.getHours();//hämta hours
+    const m = now.getMinutes();//hämta minuter
+    const s = now.getSeconds();//hämta sekunder
 
+    //skapa ett innehåll för html som inkluderar hours, minutes och seconds
+    const html = `
+    <span>${h}</span> :
+    <span>${m}</span> :
+    <span>${s}</span>
+    `;
 
+    //lägg in det i HTML
+    clock.innerHTML = html;
+};
 
-
-
-
-
-
+//skapa en intervall som uppdateras varje sekund
+tick();//lägger jag in att funktionen ska köras innan intervallen så betyder det att jag inte väntar 1 sek
+       //på att funktionen ska sättas igång pga intervallen har sats på 1 sek 
+setInterval(tick, 1000);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
