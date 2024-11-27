@@ -83,14 +83,38 @@ request.send();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                        GETTING AND SETTING ATTRIBUTES
+//                        STATUS CODE
 
+const request2 = new XMLHttpRequest();
 
+//tracka progressen av requesten
+request2.addEventListener('readystatechange', () => {
+    console.log(request2, request2.readyState);
+    //kommer bara köra ifall det är en ok respons samt status på 200
+    if (request2.readyState === 4 && request2.status === 200) {
+        //får ut json filen 
+        console.log(request2, request2.responseText);
+    } else if (request2.readyState === 4) { //saknar req status 200, något blir fel
+        console.log('Could not fetch the data');
+    };
+});
 
+//startar en request
+//tar två argument
+//1. string, typ av request vi vill göra
+//2. string, Vart vi skickar den till 
+request2.open('GET', 'https://jsonplaceholder.typicode.com/todoss/');
+//skickar requesten
+request2.send();
 
+//status 200 == allt gick bra, har kommit tillbaka med data request
+//status 404 == kan inte hitta källan vi försöker skicka till
 
-
-
+//status inom 100 == infomrationresponses
+//status inom 200 == success
+//status inom 300 == redirection messages 
+//status inom 400 == client error response, error in browser
+//status inom 500 == server error resoinse, något fel på servern 
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
