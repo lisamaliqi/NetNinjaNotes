@@ -39,25 +39,44 @@ console.log(4);
 //vi gör dessa förfrågningar till api endpoints
 
 
-
-
-
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                        ADDING AND CHANGING PAGE CONTENT
+//                       MAKING A HTTP REQUEST
 
+const request = new XMLHttpRequest();
 
+//tracka progressen av requesten
+request.addEventListener('readystatechange', () => {
+    console.log(request, request.readyState);
+    if (request.readyState === 4) {
+        //får ut json filen 
+        console.log(request.responseText);
+    };
+});
 
+//startar en request
+//tar två argument
+//1. string, typ av request vi vill göra
+//2. string, Vart vi skickar den till 
+request.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
+//skickar requesten
+request.send();
 
-
-
-
-
+//request.readeState nummer förklarade:
+/*
+0 == UNSENT
+    Client has been created, open() has not been called yet
+1 == OPENED
+    open() has been called
+2 == HEADERS_RECEIVED
+    send() has been called, and headers and status are available
+3 == LOADING
+    downloading: responseText holds partial data
+4 == DONE 
+    the operation is completed
+*/
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
