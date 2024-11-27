@@ -103,7 +103,7 @@ request2.addEventListener('readystatechange', () => {
 //tar två argument
 //1. string, typ av request vi vill göra
 //2. string, Vart vi skickar den till 
-request2.open('GET', 'https://jsonplaceholder.typicode.com/todoss/');
+request2.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
 //skickar requesten
 request2.send();
 
@@ -121,13 +121,49 @@ request2.send();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            ADDING AND REMOVING STYLES
+//                         ASYNC CODE CALLBACK
 
+//lägger det i en funktion
+const getTodos = (callback) => {
+    const request3 = new XMLHttpRequest();
 
+    //tracka progressen av requesten
+    request3.addEventListener('readystatechange', () => {
+        console.log(request3, request3.readyState);
+        //kommer bara köra ifall det är en ok respons samt status på 200
+        if (request3.readyState === 4 && request3.status === 200) {
+            callback(undefined, request3.responseText);
+        } else if (request3.readyState === 4) { //saknar req status 200, något blir fel
+            callback('could not fetch data', undefined);
+        };
+    });
 
+    request3.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
+    request3.send();
+};
 
+//async javascript:
+//detta loggas först
+console.log(1);
+console.log(2);
 
+//detta startas efter 1 och 2
+//detta blockar inte kod som kommer under
+//börjar nu och avslutas senare
+getTodos((err, data) => {
+    console.log('callback fired');
+    if (err){
+        console.log(err); //om err är true, logga detta
+    } else {
+        console.log(data); //om err är false, logga detta 
+    };
+});
 
+//detta loggas sen, men kommer loggas innan vi har hämtat data från funktionen
+console.log(3);
+console.log(4);
+
+//sedan placeras resultatet i funktionen här
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
