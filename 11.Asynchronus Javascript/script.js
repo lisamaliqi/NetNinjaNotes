@@ -57,6 +57,7 @@ request.addEventListener('readystatechange', () => {
         //får ut JSON data
 
         console.log('request1 working!');
+        console.log('---------------------------------------------------------------');
     }
 });
 //request.readeState nummer förklarade:
@@ -94,10 +95,11 @@ request2.addEventListener('readystatechange', () => {
     //om readystate är 4 och status är success
     if (request2.readyState === 4 && request2.status === 200) {
         console.log('request2 working!');
+        console.log('---------------------------------------------------------------');
     
         //om ready state är 4 men status är allt annat än success (aka error)
     } else if (request2.readyState === 4) {
-        console.log('could not fetch the data');
+        console.log('could not fetch the data from request2');
         
     }
 });
@@ -122,48 +124,36 @@ request2.send();
 
 //                         ASYNC CODE CALLBACK
 
-//lägger det i en funktion
-/* const getTodos = (callback) => {
+//Lägga detta i en funktion:
+const getTodos = (callback) => {
     const request3 = new XMLHttpRequest();
-
-    //tracka progressen av requesten
+    
     request3.addEventListener('readystatechange', () => {
-        console.log(request3, request3.readyState);
-        //kommer bara köra ifall det är en ok respons samt status på 200
         if (request3.readyState === 4 && request3.status === 200) {
-            callback(undefined, request3.responseText);
-        } else if (request3.readyState === 4) { //saknar req status 200, något blir fel
-            callback('could not fetch data', undefined);
-        };
+            //undefined först pga ej error och därmed undefined
+            //responseText i andra paramentern pga får in data
+            callback(undefined, 'request3 working!');
+        } else if (request3.readyState === 4) {
+            //string i första pga här är error och därmed är det data i detta
+            //undefined i andra eftersom att här saknas data
+            callback('Could not fetch data from request3', undefined);
+        }
     });
-
+    
+    //testa lägg till s i slutet av länken så att det blir fel, du kommer få felkod
     request3.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
     request3.send();
 };
 
-//async javascript:
-//detta loggas först
-console.log(1);
-console.log(2);
-
-//detta startas efter 1 och 2
-//detta blockar inte kod som kommer under
-//börjar nu och avslutas senare
+//anropar funktionen med en callback funktion som loggar ifall det är true eller false
 getTodos((err, data) => {
-    console.log('callback fired');
-    if (err){
-        console.log(err); //om err är true, logga detta
+    console.log('callback3 fired');
+    if (err) {
+        console.log(err);
     } else {
-        console.log(data); //om err är false, logga detta 
-    };
+        console.log(data, 'hej')
+    }
 });
-
-//detta loggas sen, men kommer loggas innan vi har hämtat data från funktionen
-console.log(3);
-console.log(4); */
-
-//sedan placeras resultatet i funktionen här
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
