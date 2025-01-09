@@ -338,36 +338,45 @@ getTodos5('todosFolder/lisa.json').then((data) => {
 //then metoden är för resolve
 //catch metoden är för reject 
 fetch('todos.json').then((response) => {
-    console.log('resolved in fetch', response);
+    // console.log('resolved in fetch', response);
     //hämtar response datan 
     //detta retunerar en promise som tar lite tid, och kan bli rejected eller resolve
     return response.json();
-}).then((data) => {
-    console.log(data);
+}).then((data) => { //nu får jag ut datan från json filen
+    // console.log(data);
 }).catch((err) => {
     //promise är bara rejected när det är någon typ av nätverkserror (offline ex)
     //däremot har man status 404 (error) om man skriver fel i fetchen
-    console.log('rejected in fetch', err);
+    // console.log('rejected in fetch', err);
 });
 
-
-
-
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            MORE EVENTS
+//                            ASYNC AND AWAIT
 
+//om man kallar en async funktion så kommer det alltid retunera en promise
+const getTodos6 = async () => {
+    //await kan endast användas i en async funktion
+    //genom await kan man chaina flera saker som returnerar promises, man väntar på att en promise ska resolveas för att nästa ska köra igång osv
+    const response2 = await fetch('todos.json');
+    const data = await response2.json();
+    return data;
+};
 
+// console.log(1);
+// console.log(2);
 
+//detta är inte blockerande!
+getTodos6() //skriv .then i en rad, i en ny rad också när du använder ny metod, ser finare ut
+    .then((data) => console.log('resolved: ', data));
 
+// console.log(3);
+// console.log(4);
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //                            MAKING A POPUP
