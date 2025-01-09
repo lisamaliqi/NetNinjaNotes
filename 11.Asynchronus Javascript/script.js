@@ -53,8 +53,10 @@ request.addEventListener('readystatechange', () => {
     // console.log(request, request.readyState);  Detta användes för att kolla status på våra requests, från 1-4
     //nu vill vi göra något när vår request är == 4 aka DONE
     if (request.readyState === 4) {
-        console.log(request.responseText);
+        // console.log(request.responseText);
         //får ut JSON data
+
+        console.log('request1 working!');
     }
 });
 //request.readeState nummer förklarade:
@@ -84,33 +86,25 @@ request.send();
 
 
 //                        STATUS CODE
-/* 
+
+//respons status kollar ifall det man försöker hämta är tillgängligt i princip, eller om det är några errors
 const request2 = new XMLHttpRequest();
 
-//tracka progressen av requesten
 request2.addEventListener('readystatechange', () => {
-    console.log(request2, request2.readyState);
-    //kommer bara köra ifall det är en ok respons samt status på 200
+    //om readystate är 4 och status är success
     if (request2.readyState === 4 && request2.status === 200) {
-        //får ut json filen 
-        console.log(request2, request2.responseText);
-    } else if (request2.readyState === 4) { //saknar req status 200, något blir fel
-        console.log('Could not fetch the data');
-    };
+        console.log('request2 working!');
+    
+        //om ready state är 4 men status är allt annat än success (aka error)
+    } else if (request2.readyState === 4) {
+        console.log('could not fetch the data');
+        
+    }
 });
 
-//startar en request
-//tar två argument
-//1. string, typ av request vi vill göra
-//2. string, Vart vi skickar den till 
+//testa lägg till s i slutet av länken så att det blir fel, du kommer få felkod
 request2.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
-//skickar requesten
-request2.send(); */
-
-
-
-
-
+request2.send();
 
 
 //status 200 == allt gick bra, har kommit tillbaka med data request
@@ -121,7 +115,6 @@ request2.send(); */
 //status inom 300 == redirection messages 
 //status inom 400 == client error response, error in browser
 //status inom 500 == server error resoinse, något fel på servern 
-
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
