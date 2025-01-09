@@ -16,19 +16,18 @@ Medans "recuesten" görs så kan resterande kod köras igenom trotts att den fö
 
 //                         ASYNC IN ACTION
 
-console.log(1);
-console.log(2);
+// console.log(1);
+// console.log(2);
 
 //async in action
 //börjar när man startar programmet, skickas senare 
 //detta blockar inte 3 eller 4 pga async, koden fortsätter köras trotts att denna inte är klar 
 setTimeout(() => {
-    console.log('Callback function fired');
+    // console.log('Callback function fired');
 }, 2000);
 
-console.log(3);
-console.log(4);
-console.log('---------------------------------------------------------------');
+// console.log(3);
+// console.log(4);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,9 +54,7 @@ request.addEventListener('readystatechange', () => {
     if (request.readyState === 4) {
         // console.log(request.responseText);
         //får ut JSON data
-
-        console.log('request1 working!');
-        console.log('---------------------------------------------------------------');
+        // console.log('request1 working!');
     }
 });
 //request.readeState nummer förklarade:
@@ -94,12 +91,11 @@ const request2 = new XMLHttpRequest();
 request2.addEventListener('readystatechange', () => {
     //om readystate är 4 och status är success
     if (request2.readyState === 4 && request2.status === 200) {
-        console.log('request2 working!');
-        console.log('---------------------------------------------------------------');
+        // console.log('request2 working!');
     
         //om ready state är 4 men status är allt annat än success (aka error)
     } else if (request2.readyState === 4) {
-        console.log('could not fetch the data from request2');
+        // console.log('could not fetch the data from request2');
         
     }
 });
@@ -147,12 +143,11 @@ const getTodos = (callback) => {
 
 //anropar funktionen med en callback funktion som loggar ifall det är true eller false
 getTodos((err, data) => {
-    console.log('callback3 fired');
+    // console.log('callback3 fired');
     if (err) {
-        console.log(err);
+        // console.log(err);
     } else {
-        console.log(data, 'req 3!')
-        console.log('---------------------------------------------------------------');
+        // console.log(data, 'req 3!')
     }
 });
 
@@ -184,12 +179,12 @@ const getTodos2 = (callback) => {
 };
 
 getTodos2((err, data) => {
-    console.log('callback4 fired');
+    // console.log('callback4 fired');
     if (err) {
-        console.log(err);
+        // console.log(err);
     } else {
         //skickar ut en array med 5 objekt som jag har lagt in i todos.json filen
-        console.log(data, 'request4 working!')
+        // console.log(data, 'request4 working!')
     }
 });
 
@@ -221,11 +216,11 @@ const getTodos3 = (resource, callback) => {
 //hur man kallar flera filer i ordning
 //detta kallas callback hell, ser inte nice ut att det växer inne i varandra
 getTodos3('todosFolder/lisa.json', (err, data) => {
-    console.log(data, 'callback5 fired for Lisa');
+    // console.log(data, 'callback5 fired for Lisa');
     getTodos3('todosFolder/tova.json', (err, data) => {
-        console.log(data, 'callback5 fired for Tova');
+        // console.log(data, 'callback5 fired for Tova');
         getTodos3('todosFolder/balder.json', (err, data) => {
-            console.log(data, 'callback5 fired for Balder');
+            // console.log(data, 'callback5 fired for Balder');
         });
     });
 });
@@ -261,9 +256,9 @@ const getTodos4 = (resource) => {
 
 //testa och lägg till s i lisa namnet för att få error
 getTodos4('todosFolder/lisa.json').then((data) => {
-    console.log('promise resolved in request6', data);
+    // console.log('promise resolved in request6', data);
 }).catch((err) => {
-    console.log('promise rejected in request6', err);
+    // console.log('promise rejected in request6', err);
 });
 
 //promise example
@@ -289,26 +284,53 @@ const getSomething = () => {
 
 //finns ett liiiite bättre sätt att skriva getSomething metoden på:
 getSomething().then(data => {
-    console.log(data, 'data in NEW then method');
+    // console.log(data, 'data in NEW then method');
 }).catch(err => {
-    console.log(err, 'err in NEW then method');
+    // console.log(err, 'err in NEW then method');
 });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            CREATING AND REMOVING ELEMENTS
+//                            CHAINING PROMISES
+
+const getTodos5 = (resource) => {
+
+    return new Promise((resolve, reject) => {
+        const request7 = new XMLHttpRequest();
+        
+        request7.addEventListener('readystatechange', () => {
+            if (request7.readyState === 4 && request7.status === 200) {
+                const data = JSON.parse(request7.responseText)
+                resolve(data, 'resolved data in request7!')
+            } else if (request7.readyState === 4) {
+                reject('error getting resource in request7!')
+            }
+        });
+
+        request7.open('GET', resource);
+        request7.send();
+    });
+
+};
+
+//hur man chainar promises, det blir inte den triangeln som man får vid callback hell, utan detta ser mer logiskt ut 
+getTodos5('todosFolder/lisa.json').then((data) => {
+    console.log('promise 1 resolved in request7', data);
+    return getTodos5('todosFolder/tova.json');
+}).then((data) => {
+    console.log('promise 2 resolved in request7: ', data);
+    return getTodos5('todosFolder/balder.json');
+}).then((data) => {
+    console.log('promise 3 resolved in request7: ', data);
+}).catch((err) => {
+    console.log('promise rejected in request7', err);
+});
 
 
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //                            EVENT BUBBLING AND DELEGATION
