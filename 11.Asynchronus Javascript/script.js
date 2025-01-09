@@ -317,13 +317,13 @@ const getTodos5 = (resource) => {
 
 //hur man chainar promises, det blir inte den triangeln som man får vid callback hell, utan detta ser mer logiskt ut 
 getTodos5('todosFolder/lisa.json').then((data) => {
-    console.log('promise 1 resolved in request7', data);
+    // console.log('promise 1 resolved in request7', data);
     return getTodos5('todosFolder/tova.json');
 }).then((data) => {
-    console.log('promise 2 resolved in request7: ', data);
+    // console.log('promise 2 resolved in request7: ', data);
     return getTodos5('todosFolder/balder.json');
 }).then((data) => {
-    console.log('promise 3 resolved in request7: ', data);
+    // console.log('promise 3 resolved in request7: ', data);
 }).catch((err) => {
     console.log('promise rejected in request7', err);
 });
@@ -333,18 +333,29 @@ getTodos5('todosFolder/lisa.json').then((data) => {
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            EVENT BUBBLING AND DELEGATION
+//                            FETCH API
+//detta är ett mer modernt sätt att hämta API, kräver mindre kod
+//then metoden är för resolve
+//catch metoden är för reject 
+fetch('todos.json').then((response) => {
+    console.log('resolved in fetch', response);
+    //hämtar response datan 
+    //detta retunerar en promise som tar lite tid, och kan bli rejected eller resolve
+    return response.json();
+}).then((data) => {
+    console.log(data);
+}).catch((err) => {
+    //promise är bara rejected när det är någon typ av nätverkserror (offline ex)
+    //däremot har man status 404 (error) om man skriver fel i fetchen
+    console.log('rejected in fetch', err);
+});
 
 
 
 
 
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //                            MORE EVENTS
