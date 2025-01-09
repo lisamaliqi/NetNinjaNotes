@@ -22,12 +22,15 @@ console.log(2);
 //async in action
 setTimeout(() => {
     console.log('callback function fired!'); 
+    console.log('---------------------------------------------------------------');
 }, 2000);
 //denna funktionen körs igång efter två sek, men det som är under (3,4) kommer att köras trotts att
 //det är en delay på 2 sek
 
 console.log(3);
 console.log(4);
+
+console.log('---------------------------------------------------------------');
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,7 +87,7 @@ request.send();
 
 
 //                        STATUS CODE
-
+/* 
 const request2 = new XMLHttpRequest();
 
 //tracka progressen av requesten
@@ -105,7 +108,13 @@ request2.addEventListener('readystatechange', () => {
 //2. string, Vart vi skickar den till 
 request2.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
 //skickar requesten
-request2.send();
+request2.send(); */
+
+
+
+
+
+
 
 //status 200 == allt gick bra, har kommit tillbaka med data request
 //status 404 == kan inte hitta källan vi försöker skicka till
@@ -124,7 +133,7 @@ request2.send();
 //                         ASYNC CODE CALLBACK
 
 //lägger det i en funktion
-const getTodos = (callback) => {
+/* const getTodos = (callback) => {
     const request3 = new XMLHttpRequest();
 
     //tracka progressen av requesten
@@ -161,7 +170,7 @@ getTodos((err, data) => {
 
 //detta loggas sen, men kommer loggas innan vi har hämtat data från funktionen
 console.log(3);
-console.log(4);
+console.log(4); */
 
 //sedan placeras resultatet i funktionen här
 
