@@ -151,7 +151,7 @@ getTodos((err, data) => {
     if (err) {
         console.log(err);
     } else {
-        console.log(data, 'hej')
+        console.log(data, 'req 3!')
         console.log('---------------------------------------------------------------');
     }
 });
@@ -160,7 +160,7 @@ getTodos((err, data) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            JSON Data
+//                            JSON DATA
 
 //vi vill göra om all data till objekt 
 const getTodos2 = (callback) => {
@@ -173,7 +173,7 @@ const getTodos2 = (callback) => {
             const data = JSON.parse(request4.responseText)
             callback(undefined, data);
         } else if (request4.readyState === 4) {
-            callback('Could not fetch data from request3', undefined);
+            callback('Could not fetch data from request4', undefined);
         }
     });
 
@@ -198,16 +198,42 @@ getTodos2((err, data) => {
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                      PARENTS, CHILDREN AND SIBLINGS
+//                      CALLBACK HELL 
+//hur gör man för att hämta flera json filer? kolla mappen todosFolder
+//lägger till ett nytt argument som heter "resource" och hämtar ut den i open()
+const getTodos3 = (resource, callback) => {
+    const request5 = new XMLHttpRequest();
+    
+    request5.addEventListener('readystatechange', () => {
+        if (request5.readyState === 4 && request5.status === 200) {
+            const data = JSON.parse(request5.responseText)
+            callback(undefined, data);
+        } else if (request5.readyState === 4) {
+            callback('Could not fetch data from request5', undefined);
+        }
+    });
 
+    request5.open('GET', resource);
+    request5.send();
+};
 
+//lisa blir resource argumentet
+//hur man kallar flera filer i ordning
+//detta kallas callback hell, ser inte nice ut att det växer inne i varandra
+getTodos3('todosFolder/lisa.json', (err, data) => {
+    console.log(data, 'callback5 fired for Lisa');
+    getTodos3('todosFolder/tova.json', (err, data) => {
+        console.log(data, 'callback5 fired for Tova');
+        getTodos3('todosFolder/balder.json', (err, data) => {
+            console.log(data, 'callback5 fired for Balder');
+        });
+    });
+});
 
+//detta sättet är inte optimalt, utan promises är bättre
 
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //                            EVENTS AND EVENT LISTENERS
