@@ -152,6 +152,7 @@ getTodos((err, data) => {
         console.log(err);
     } else {
         console.log(data, 'hej')
+        console.log('---------------------------------------------------------------');
     }
 });
 
@@ -159,17 +160,42 @@ getTodos((err, data) => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            ADDING AND REMOVING CLASSES
+//                            JSON Data
+
+//vi vill göra om all data till objekt 
+const getTodos2 = (callback) => {
+    const request4 = new XMLHttpRequest();
+    
+    request4.addEventListener('readystatechange', () => {
+        if (request4.readyState === 4 && request4.status === 200) {
+
+            //parse tar in JSON strings och gör om det till js objects
+            const data = JSON.parse(request4.responseText)
+            callback(undefined, data);
+        } else if (request4.readyState === 4) {
+            callback('Could not fetch data from request3', undefined);
+        }
+    });
+
+    //skapat en egen JSON fil som heter todos.JSON
+    //att hämta data från egen json fil är snabbare än att hämta från en extern (de andra)
+    request4.open('GET', 'todos.json');
+    request4.send();
+};
+
+getTodos2((err, data) => {
+    console.log('callback4 fired');
+    if (err) {
+        console.log(err);
+    } else {
+        //skickar ut en array med 5 objekt som jag har lagt in i todos.json filen
+        console.log(data, 'request4 working!')
+    }
+});
 
 
-
-
-
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //                      PARENTS, CHILDREN AND SIBLINGS
