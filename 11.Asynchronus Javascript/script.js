@@ -33,41 +33,30 @@ console.log('---------------------------------------------------------------');
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
 //                            WHAT ARE HTTP REQUESTS
 //man gör detta för att hämta data från en annan server
 //vi gör dessa förfrågningar till api endpoints
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //                       MAKING A HTTP REQUEST
 
-
-
-
-
-/* 
+//skapa request object
+//Detta är vad som kommer skicka en request till browsern
 const request = new XMLHttpRequest();
 
-//tracka progressen av requesten
 request.addEventListener('readystatechange', () => {
-    console.log(request, request.readyState);
+    // console.log(request, request.readyState);  Detta användes för att kolla status på våra requests, från 1-4
+    //nu vill vi göra något när vår request är == 4 aka DONE
     if (request.readyState === 4) {
-        //får ut json filen 
         console.log(request.responseText);
-    };
+        //får ut JSON data
+    }
 });
-
-//startar en request
-//tar två argument
-//1. string, typ av request vi vill göra
-//2. string, Vart vi skickar den till 
-request.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
-//skickar requesten
-request.send();
-
 //request.readeState nummer förklarade:
 
 // 0 == UNSENT
@@ -81,7 +70,14 @@ request.send();
 // 4 == DONE 
 //     the operation is completed
 
- */
+
+//open() tar två argument, 1 är string och berättar vad för TYP av request vi vill göra 
+//2:a argumentet är endpoint som vi vill ta data ifrån 
+//vad för typ av request och vart vi ska ta detta ifrån 
+request.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
+//detta skapar möjligheten till att göra en request, men inte att man hämtar något
+//för att hämta request behöver man göra såhär: 
+request.send();
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
