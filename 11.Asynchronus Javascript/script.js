@@ -236,18 +236,66 @@ getTodos3('todosFolder/lisa.json', (err, data) => {
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            EVENTS AND EVENT LISTENERS
+//                            PROMISE BASICS
 
+const getTodos4 = (resource) => {
 
+    return new Promise((resolve, reject) => {
+        const request6 = new XMLHttpRequest();
+        
+        request6.addEventListener('readystatechange', () => {
+            if (request6.readyState === 4 && request6.status === 200) {
+                const data = JSON.parse(request6.responseText)
+                //kan byta ut callback med resolve och reject istället
+                resolve(data, 'resolved data in request6!')
+            } else if (request6.readyState === 4) {
+                reject('error getting resource in request6!')
+            }
+        });
 
+        request6.open('GET', resource);
+        request6.send();
+    });
 
+};
 
+//testa och lägg till s i lisa namnet för att få error
+getTodos4('todosFolder/lisa.json').then((data) => {
+    console.log('promise resolved in request6', data);
+}).catch((err) => {
+    console.log('promise rejected in request6', err);
+});
 
+//promise example
+const getSomething = () => {
+    //det första man gör när man skapar en promise är detta:
+    //Promise är något som kommer ta en viss tid att göra
+    //Promise leder till två utkom:
+        //Resolved, vi får datan vi vill ha
+        //rejected, vi får error och rejectar det
+    return new Promise((resolve, reject) => {
+        //fetch något 
+        resolve('some data');
+        // reject('error!!!!!!')
+    });
+};
 
+//then metoden kör igång ifall första delen är resolved, och andra delen ifall det är reject
+// getSomething().then((data) => {
+//     console.log(data, 'data in then method');
+// }, (err) => {
+//     console.log(err, 'err in then method');
+// });
 
+//finns ett liiiite bättre sätt att skriva getSomething metoden på:
+getSomething().then(data => {
+    console.log(data, 'data in NEW then method');
+}).catch(err => {
+    console.log(err, 'err in NEW then method');
+});
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 //                            CREATING AND REMOVING ELEMENTS
