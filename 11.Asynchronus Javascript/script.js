@@ -370,7 +370,7 @@ const getTodos6 = async () => {
 
 //detta är inte blockerande!
 getTodos6() //skriv .then i en rad, i en ny rad också när du använder ny metod, ser finare ut
-    .then((data) => console.log('resolved: ', data));
+    .then((data) => console.log('resolved in getTodos6: ', data));
 
 // console.log(3);
 // console.log(4);
@@ -379,4 +379,20 @@ getTodos6() //skriv .then i en rad, i en ny rad också när du använder ny meto
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//                            MAKING A POPUP
+//                            THROWING CUSTOM ERRORS
+
+const getTodos7 = async () => {
+    const response3 = await fetch('todos.json');
+
+    //gör din egen error ifall json filen är felaktig (alltså om man ex stavar fel på namnet)
+    if (response3.status !== 200) {
+        throw new Error('Cannot fetch data in getTodos7');
+    };
+
+    const data = await response3.json();
+    return data;
+};
+
+getTodos7() 
+    .then((data) => console.log('resolved in getTodos7: ', data))
+    .catch(err => console.log('rejected in getTodos7: ', err, err.message));
