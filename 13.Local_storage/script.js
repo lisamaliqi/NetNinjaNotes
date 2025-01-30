@@ -52,3 +52,26 @@ console.log(myAge);
 
 //om jag nu tar bort rad 23-24 samt 42-50 så kommer det loggas ut tova och 24 pga det var det senaste som skrevs in
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//                     DELETING STORAGE DATA
+// remove one item
+//argument är den key man vill ta bort
+// localStorage.removeItem('name');
+
+//försöker jag hämta ut name så får jag resultatet null
+myName = localStorage.getItem('name');
+console.log(myName);
+
+
+// remove all items
+localStorage.clear();
+
+myName = localStorage.getItem('name');
+myAge = localStorage.getItem('age');
+
+//detta bör printa ut null null
+console.log(myName, myAge);
+
