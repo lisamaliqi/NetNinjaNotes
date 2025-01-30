@@ -75,3 +75,33 @@ myAge = localStorage.getItem('age');
 //detta bör printa ut null null
 console.log(myName, myAge);
 
+console.log('---------------------------------------------');
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//                     STRINGIFYING AND PARSING DATA
+
+//array som vi vill förvara i localStorage
+const todos = [
+    {text: 'Plugga programmering', author: 'Lisa'},
+    {text: 'Virka tills fingrarna gör ont', author: 'Tova'},
+    {text: 'Be om mat', author: 'Balder'},
+];
+
+//vi måste först göra om detta till en JSON string
+//använd sig av metoden JSON.stringify()
+console.log(JSON.stringify(todos));
+
+//förvara det i localStorage
+localStorage.setItem('todos', JSON.stringify(todos));
+
+//hämta det
+const storedData = localStorage.getItem('todos');
+console.log(storedData);
+
+//konvertera tillbaks till array för att använda det
+//gör om JSON filen till ett javascript objekt med parse
+console.log(JSON.parse(storedData));
+
